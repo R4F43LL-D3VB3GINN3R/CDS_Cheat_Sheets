@@ -48,13 +48,15 @@ define view ZDD_PARCEIRO as select from zcliente
 {
     clienteid as Parceiroid,
     nome as Nome,
-    cast('' as abap.char(255)) as Email 
+    cast('' as abap.char(255)) as Email,
+    'C' as tipo
 }
 union all
 select from zfornecedor
 {
     fornecedorid as Parceiroid,
     nome as Nome,
-    email as Email
+    email as Email,
+    'F' as tipo
 }
 
