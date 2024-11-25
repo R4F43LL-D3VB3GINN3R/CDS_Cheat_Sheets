@@ -1,3 +1,5 @@
+"https://help.sap.com/doc/abapdocu_750_index_htm/7.50/en-US/abencds_f1_builtin_functions.htm -- All functions to be used.
+
 @AbapCatalog.sqlViewName: 'ZV_CLIENTE'
 @AbapCatalog.compiler.compareFilter: true
 @AbapCatalog.preserveKey: true
