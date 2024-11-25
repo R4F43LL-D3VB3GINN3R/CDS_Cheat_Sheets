@@ -37,6 +37,7 @@ select from zfornecedor
 }
 
 "Em caso de uma das tabelas não conter o mesmo número de campos, podemos adicionar este campo na tabela que não o tem
+"Também deve ser realizado um casting no campo criado para ele não assumir um char1, este mesmo campo deve de ter o mesmo tipo de dado do campo original.
 
 @AbapCatalog.sqlViewName: 'ZV_PARCEIRO'
 @AbapCatalog.compiler.compareFilter: true
@@ -47,7 +48,7 @@ define view ZDD_PARCEIRO as select from zcliente
 {
     clienteid as Parceiroid,
     nome as Nome,
-    ''  as Email 
+    cast('' as abap.char(255)) as Email 
 }
 union all
 select from zfornecedor
