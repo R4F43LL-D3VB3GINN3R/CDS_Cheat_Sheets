@@ -101,6 +101,7 @@ method /BOBF/IF_FRW_VALIDATION~EXECUTE.
     "                        --> =>sc_node_attribute (método estático da interface)
     "                        --> zdd_chamado-assunto (campo da estrutura a ser validada) ps -- mais campos podem ser passados
 
+    "carrega as informacoes do chamado
     io_read->retrieve(
       exporting
         iv_node                 = is_ctx-node_key                                                        " Node Name
@@ -154,6 +155,77 @@ method /BOBF/IF_FRW_VALIDATION~EXECUTE.
 "028 - Expanda ainda mais o node até aparecer os atributos do Objeto (Campos da CDS) e marque o ID >> CHAMADOID
 "029 - Depois vá para a própxima aba chamada Evaluation Timepoints e expanda o node e marque a checkbox During Save
 "030 - Dê duplo clique no nome da classe para criar
+
+"031 - Entre no Método /BOBF/IF_FRW_DETERMINATION~EXECUTE para implementá-lo.
+
+"------------------------------------------------------------------------------------------------------------------------"
+
+"PARAMETROS
+
+IS_CTX	TYPE /BOBF/S_FRW_CTX_DET	Context Information for Determinations
+IT_KEY	TYPE /BOBF/T_FRW_KEY	Key Table
+IO_READ	TYPE REF TO /BOBF/IF_FRW_READ	Interface to Reading Data
+IO_MODIFY	TYPE REF TO /BOBF/IF_FRW_MODIFY	Interface to Change Data
+EO_MESSAGE	TYPE REF TO /BOBF/IF_FRW_MESSAGE	Message Object
+ET_FAILED_KEY	TYPE /BOBF/T_FRW_KEY	Key Table
+/BOBF/CX_FRW		Exception class
+
+  method /BOBF/IF_FRW_DETERMINATION~EXECUTE.
+
+    "PS: USAR ESSE METODO COMO EXEMPLO PARA REALIZAR OUTRAS VALIDACOES!
+
+    "limpeza dos dados de saída
+    clear eo_message.
+    clear et_failed_key.
+
+    data: lt_data type ztddchamado.           "tipo tabela criado pelo objeto de negocio serve como referencia para CDS
+    data: ld_id   type zsddchamado-chamadoid. "chave da CDS
+
+    "carrega as informacoes do chamado
+    io_read->retrieve(
+      exporting
+        iv_node                 = is_ctx-node_key                                                        " Node Name
+        it_key                  = it_key                                                                 " Key Table
+      importing
+        et_data                 = lt_data ).                                                             " Data Return Structure
+
+    "seleciona a maior chave do chamado
+    select  max( chamadoid )
+      from zchamado
+      into ld_id.
+
+    "incrementa se encontrar chave e seta como 1 caso nao encontre
+    if sy-subrc eq 0.
+      add 1 to ld_id.
+    else.
+      ld_id = 1.
+    endif.
+
+    "atribuindo auto incremento para cada linha de chave que nao possua uma
+    loop at lt_data reference into data(lr_data) where chamadoid = 0.
+      lr_data->chamadoid = ld_id. "recebe o id da consulta
+
+      "modifica a tabela conforme o id passado
+      try.
+        call method io_modify->update
+          exporting
+            iv_node           = is_ctx-node_key                                                          " Node
+            iv_key            = lr_data->key                                                             " Key
+            is_data           = lr_data                                                                  " Data
+            it_changed_fields = value #( ( zif_dd_chamado_c=>sc_node_attribute-zdd_chamado-chamadoid ) ) " List of Names (e.g. Fieldnames)
+          .
+      catch /bobf/cx_frw.
+      endtry.
+
+      add 1 to ld_id. "incrementa a chave
+
+    endloop.
+
+  endmethod.
+
+"------------------------------------------------------------------------------------------------------------------------"
+
+
 
 
 
