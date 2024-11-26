@@ -43,3 +43,9 @@ define view ZDD_CHAMADO as select from zchamado
     status as Status
 }
 
+"003 - Preencher esta Annotation com o nome da Tabela --> @ObjectModel.writeActivePersistence: 'ZCHAMADO'
+
+"004 - Preencher as duas Annotations com o nome da chave da Tabela 
+--> @ObjectModel.semanticKey: [ 'chamadoid' ]
+--> @ObjectModel.alternativeKey: [ 'chamadoid' ]
+
