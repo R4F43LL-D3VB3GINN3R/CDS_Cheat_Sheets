@@ -72,11 +72,11 @@ define view ZDD_CHAMADO as select from zchamado
 
 "PARAMETROS
 
-IS_CTX	TYPE /BOBF/S_FRW_CTX_VAL	Context Information for Validations
-IT_KEY	TYPE /BOBF/T_FRW_KEY	Key Table
-IO_READ	TYPE REF TO /BOBF/IF_FRW_READ	Interface to Reading Data
-EO_MESSAGE	TYPE REF TO /BOBF/IF_FRW_MESSAGE	Message Object
-ET_FAILED_KEY	TYPE /BOBF/T_FRW_KEY	Node Assignment to Error Flag
+IS_CTX	        TYPE /BOBF/S_FRW_CTX_VAL	Context Information for Validations
+IT_KEY	        TYPE /BOBF/T_FRW_KEY	Key Table
+IO_READ	        TYPE REF TO /BOBF/IF_FRW_READ	Interface to Reading Data
+EO_MESSAGE	    TYPE REF TO /BOBF/IF_FRW_MESSAGE	Message Object
+ET_FAILED_KEY	  TYPE /BOBF/T_FRW_KEY	Node Assignment to Error Flag
 /BOBF/CX_FRW		BOPF Exception Class
 
 method /BOBF/IF_FRW_VALIDATION~EXECUTE.
