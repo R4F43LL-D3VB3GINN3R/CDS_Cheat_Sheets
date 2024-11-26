@@ -58,6 +58,9 @@ define view ZDD_CHAMADO as select from zchamado
 "011 - Ir a transação BOBX
 "012 - Procurar o nome da CDS e cliquee nela
 "013 - Alterne para Modificação / Edição
+
+"CRIANDO VALIDACOES
+
 "014 - Abra a pasta Node Elements >> Nome da CDS >> Validations
 "015 - Clicar com o botão direito em Validations >> Create Validation >> Consistense Validation
 "016 - Preencha o nome da Validação EX: VALIDACAO e informe a Descrição EX: VALIDACAO
@@ -140,6 +143,18 @@ method /BOBF/IF_FRW_VALIDATION~EXECUTE.
   endmethod.
 
 "------------------------------------------------------------------------------------------------------------------------"
+
+"CRIANDO DETERMINACOES - AUTO INCREMENTOS
+
+"023 - Novamente na BOBX >> Node Elements >> ZDD_CHAMADO >> Determinations
+"024 - Ignorar a Determination criada e criar uma nova clicando com o botão direito
+"025 - Preencha nome e descrição EX: Nome->SET_CHAMADOID Descricao->Seta o ID do chamado
+"026 - No campo da Classe não use a mesma e preencha com uma diferente ZCL_CHAMADO_SETID
+"027 - Vá na aba de Trigger Conditions e expanda o node e marque a checkbox ZDD_CHAMADO e marque também a checkbox CREATE
+"028 - Expanda ainda mais o node até aparecer os atributos do Objeto (Campos da CDS) e marque o ID >> CHAMADOID
+"029 - Depois vá para a própxima aba chamada Evaluation Timepoints e expanda o node e marque a checkbox During Save
+"030 - Dê duplo clique no nome da classe para criar
+
 
 
 
