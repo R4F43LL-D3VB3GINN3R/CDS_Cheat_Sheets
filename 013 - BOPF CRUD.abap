@@ -225,6 +225,41 @@ ET_FAILED_KEY	TYPE /BOBF/T_FRW_KEY	Key Table
 
 "------------------------------------------------------------------------------------------------------------------------"
 
+"032 - Ativando Objetos do BOPF >> Transação BOBX
+"033 - Na Aba de cima ative o modo edição e vá na primeira opção Business  Object >> Check...Depois Check and Generate e Depois Check novamente e depois Check and Generate mais uuma vez...kkkk
+"034 - Depois dos objetos gerados e sem erros podemos usar os objetos do BOPF
+"035 - Vá na Transação SE16 para criar entradas para a sua Tabela caso necessite.
+
+"036 - Agora teste o seu serviço no sap gateway client.
+"037 - Para criar um novo dado a partir da Request, clique na aba Use as Request e você notará que os dados serão replicados como um requisição do lado esquerdo
+"038 - Mude para POST e não passe nenhum id na URL e remova as referências dos dados de referência do lado esquerda removendo ids ou dados similares.
+
+EX: --------------------------------------------------
+
+<?xml version="1.0" encoding="utf-8"?>
+<entry xml:base="http://sbxsappsrv.sbx.local:8031/sap/opu/odata/sap/ZDD_CHAMADO_CDS/" xmlns="http://www.w3.org/2005/Atom" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices">
+ <id>http://sbxsappsrv.sbx.local:8031/sap/opu/odata/sap/ZDD_CHAMADO_CDS/ZDD_CHAMADO</id>
+ <title type="text">ZDD_CHAMADO</title>
+ <updated>2024-11-26T19:40:26Z</updated>
+ <category term="ZDD_CHAMADO_CDS.ZDD_CHAMADOType" scheme="http://schemas.microsoft.com/ado/2007/08/dataservices/scheme"/>
+ <link href="ZDD_CHAMADO" rel="edit" title="ZDD_CHAMADOType"/>
+ <content type="application/xml">
+  <m:properties>
+   <d:Chamadoid>0</d:Chamadoid>
+   <d:Assunto>TESTE</d:Assunto>
+   <d:Descricao>TESTE2</d:Descricao>
+   <d:Solicitanteid>2</d:Solicitanteid>
+   <d:Status>A</d:Status>
+  </m:properties>
+ </content>
+</entry>
+
+EX: --------------------------------------------------
+
+"039 - Você fazer o mesmo processo com o Método PUT para dar update nos dados e deve se deixar o parametro de referencia na URL e na Request se houver.
+"040 - Para Delete, faça a mesma coisa que o Update, mas não precisa do Use as Request
+
+
 
 
 
