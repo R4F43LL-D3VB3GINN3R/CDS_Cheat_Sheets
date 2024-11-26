@@ -49,3 +49,10 @@ define view ZDD_CHAMADO as select from zchamado
 --> @ObjectModel.semanticKey: [ 'chamadoid' ]
 --> @ObjectModel.alternativeKey: [ 'chamadoid' ]
 
+"005 - Ir a Transação no SAP GUI --> /n/IWFND/MAINT_SERVICE
+"006 - Clicar em Inserir Serviço
+"007 - No Campo Alias do Sistema, digitar Local
+"008 - Procurar na parte de baixo da lista o Serviço
+"009 - Clicar em Inserir Serviços Relacionados
+"010 - Escolher um pacote e clicar em Ok
+
