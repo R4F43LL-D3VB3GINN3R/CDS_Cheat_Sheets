@@ -2,7 +2,7 @@
 "Com mudança no Annotation #ALLOWED para permitir mudanças na SE16
 
 @EndUserText.label : 'Tabela de  Chamados'
-@AbapCatalog.enhancementCategory : #NOT_EXTENSIBLE
+@AbapCatalog.enhancementCategory : #NOT_EXTENSIBLE   
 @AbapCatalog.tableCategory : #TRANSPARENT
 @AbapCatalog.deliveryClass : #A
 @AbapCatalog.dataMaintenance : #ALLOWED
